@@ -202,7 +202,7 @@ void StartTask03(void const * argument)
   for(;;)
   {
 
-//	blink_blue();
+	blink_blue();
     osDelay(500);
   }
   /* USER CODE END StartTask03 */

@@ -149,8 +149,9 @@
 //#define TCPIP_DEBUG                     LWIP_DBG_ON
 #define DHCP_DEBUG                      LWIP_DBG_ON
 //#define UDP_DEBUG                       LWIP_DBG_ON
-#define MEMP_DEBUG                       LWIP_DBG_ON
-#define SYS_DEBUG                       LWIP_DBG_ON
+//#define MEMP_DEBUG                       LWIP_DBG_ON
+//#define SYS_DEBUG                       LWIP_DBG_ON
+//#define MEM_DEBUG                       LWIP_DBG_ON
 //#define TCP_DEBUG                       LWIP_DBG_ON
 /* USER CODE END 1 */
 
