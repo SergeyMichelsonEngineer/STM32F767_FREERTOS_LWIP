@@ -39,6 +39,7 @@
 #include "lwip/api.h"
 #include "lwip/sys.h"
 #include "stdio.h"
+#include "string.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -51,6 +52,7 @@ static struct netbuf *buf;
 static ip_addr_t *addr;
 static unsigned short port;
 
+
 /* Private function prototypes -----------------------------------------------*/
 static void udpecho_thread(void *arg);
 void udpecho_init(void);
@@ -59,17 +61,23 @@ void udpecho_init(void);
 static void udpecho_thread(void *arg)
 {
   err_t err, recv_err;
-  
+  char my_buff[]="this is from my buffer\n";
+
   LWIP_UNUSED_ARG(arg);
 
   conn = netconn_new(NETCONN_UDP);
+
+
   if (conn!= NULL)
   {
     err = netconn_bind(conn, IP_ADDR_ANY, 7);
+
+
     if (err == ERR_OK)
     {
       while (1) 
       {
+
         recv_err = netconn_recv(conn, &buf);
       
         if (recv_err == ERR_OK) 
@@ -78,6 +86,8 @@ static void udpecho_thread(void *arg)
           port = netbuf_fromport(buf);
           netconn_connect(conn, addr, port);
           buf->addr.addr = 0;
+          netbuf_ref(buf,my_buff,sizeof(my_buff));	// there more netbuf functions to use the buffer.
+//          memset(buf->p->payload,555555,3);
           netconn_send(conn,buf);
           netbuf_delete(buf);
         }

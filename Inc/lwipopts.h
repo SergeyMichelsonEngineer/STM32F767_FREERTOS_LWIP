@@ -141,13 +141,13 @@
 #define CHECKSUM_CHECK_ICMP6 0
 /*-----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
-#define LWIP_DEBUG 						1
+//#define LWIP_DEBUG 						1
 //#define TCP_DEBUG                       LWIP_DBG_ON
 //#define ETHARP_DEBUG                    LWIP_DBG_ON
 //#define PBUF_DEBUG                      LWIP_DBG_ON
 //#define IP_DEBUG                        LWIP_DBG_ON
 //#define TCPIP_DEBUG                     LWIP_DBG_ON
-#define DHCP_DEBUG                      LWIP_DBG_ON
+//#define DHCP_DEBUG                      LWIP_DBG_ON
 //#define UDP_DEBUG                       LWIP_DBG_ON
 //#define MEMP_DEBUG                       LWIP_DBG_ON
 //#define SYS_DEBUG                       LWIP_DBG_ON

@@ -58,6 +58,9 @@
 /* USER CODE BEGIN Includes */     
 #include "leds.h"
 #include "stdio.h"
+#include "lwip/api.h"
+
+
 extern void tcpecho_init(void);
 extern void udpecho_init(void);
 /* USER CODE END Includes */
@@ -197,7 +200,9 @@ void StartTask02(void const * argument)
 void StartTask03(void const * argument)
 {
   /* USER CODE BEGIN StartTask03 */
-	  printf("starting Task03\n");
+
+
+  printf("starting Task03\n");
   /* Infinite loop */
   for(;;)
   {
