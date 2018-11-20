@@ -87,6 +87,8 @@ extern void udpecho_init(void);
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
 osThreadId myTask03Handle;
+osTimerId myTimer01Handle;
+osTimerId myTimer02Handle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -96,6 +98,8 @@ osThreadId myTask03Handle;
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartTask03(void const * argument);
+void Callback01(void const * argument);
+void Callback02(void const * argument);
 
 extern void MX_LWIP_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -117,6 +121,15 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
+
+  /* Create the timer(s) */
+  /* definition and creation of myTimer01 */
+  osTimerDef(myTimer01, Callback01);
+  myTimer01Handle = osTimerCreate(osTimer(myTimer01), osTimerPeriodic, NULL);
+
+  /* definition and creation of myTimer02 */
+  osTimerDef(myTimer02, Callback02);
+  myTimer02Handle = osTimerCreate(osTimer(myTimer02), osTimerPeriodic, NULL);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -211,6 +224,22 @@ void StartTask03(void const * argument)
     osDelay(500);
   }
   /* USER CODE END StartTask03 */
+}
+
+/* Callback01 function */
+void Callback01(void const * argument)
+{
+  /* USER CODE BEGIN Callback01 */
+  
+  /* USER CODE END Callback01 */
+}
+
+/* Callback02 function */
+void Callback02(void const * argument)
+{
+  /* USER CODE BEGIN Callback02 */
+  
+  /* USER CODE END Callback02 */
 }
 
 /* Private application code --------------------------------------------------*/
