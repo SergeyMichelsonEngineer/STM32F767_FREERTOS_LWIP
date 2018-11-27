@@ -40,11 +40,12 @@
 #include "lwip/sys.h"
 #include "stdio.h"
 #include "string.h"
+#include "lwip/netif.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define UDPECHO_THREAD_PRIO  ( tskIDLE_PRIORITY + 4 )
-
+#define DEFEINED_PORT 7
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 static struct netconn *conn;
@@ -56,7 +57,7 @@ static unsigned short port;
 /* Private function prototypes -----------------------------------------------*/
 static void udpecho_thread(void *arg);
 void udpecho_init(void);
-
+extern void printUDPport(struct netconn *conn);
 /*-----------------------------------------------------------------------------------*/
 static void udpecho_thread(void *arg)
 {
@@ -70,8 +71,9 @@ static void udpecho_thread(void *arg)
 
   if (conn!= NULL)
   {
-    err = netconn_bind(conn, IP_ADDR_ANY, 7);
+    err = netconn_bind(conn, IP_ADDR_ANY, DEFEINED_PORT);
 
+    printUDPport(conn);
 
     if (err == ERR_OK)
     {
@@ -99,6 +101,11 @@ static void udpecho_thread(void *arg)
     }
   }
 }
+
+
+
+
+
 /*-----------------------------------------------------------------------------------*/
 void udpecho_init(void)
 {

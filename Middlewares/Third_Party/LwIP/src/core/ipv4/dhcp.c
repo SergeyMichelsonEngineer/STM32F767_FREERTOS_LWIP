@@ -1113,14 +1113,6 @@ dhcp_bind(struct netif *netif)
      to ensure the callback can use dhcp_supplied_address() */
   dhcp_set_state(dhcp, DHCP_STATE_BOUND);
 
-  u8_t add0 = (dhcp->offered_ip_addr.addr)>>24;
-  u8_t add1 = (dhcp->offered_ip_addr.addr)>>16;
-  u8_t add2 = (dhcp->offered_ip_addr.addr)>>8;
-  u8_t add3 = (dhcp->offered_ip_addr.addr);
-
-  printf("IP ADDRESS GIVEN BY DHCP: %d.%d.%d.%d \n", add3,add2,add1,add0);
-
-
   netif_set_addr(netif, &dhcp->offered_ip_addr, &sn_mask, &gw_addr);
   /* interface is used by routing now that an address is set */
 }

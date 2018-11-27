@@ -61,8 +61,9 @@
 #include "lwip/api.h"
 
 
-extern void tcpecho_init(void);
+//extern void tcpecho_init(void);
 extern void udpecho_init(void);
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -125,7 +126,7 @@ void MX_FREERTOS_Init(void) {
   /* Create the timer(s) */
   /* definition and creation of myTimer01 */
   osTimerDef(myTimer01, Callback01);
-  myTimer01Handle = osTimerCreate(osTimer(myTimer01), osTimerPeriodic, NULL);
+  myTimer01Handle = osTimerCreate(osTimer(myTimer01), osTimerOnce, NULL);
 
   /* definition and creation of myTimer02 */
   osTimerDef(myTimer02, Callback02);
@@ -174,11 +175,13 @@ void StartDefaultTask(void const * argument)
 //  tcpecho_init();
   udpecho_init();
 
+
+
   /* Infinite loop */
   for(;;)
   {
 
-    osDelay(10);
+    osDelay(100);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -230,7 +233,7 @@ void StartTask03(void const * argument)
 void Callback01(void const * argument)
 {
   /* USER CODE BEGIN Callback01 */
-  
+printf("thread from LWIP init");
   /* USER CODE END Callback01 */
 }
 

@@ -64,6 +64,7 @@ void _Error_Handler(char * file, int line);
 
 /* USER CODE BEGIN 1 */
 
+extern void printDHCP_IP(struct netif *netif);
 /* USER CODE END 1 */
 
 /* Variables Initialization */
@@ -110,7 +111,7 @@ void MX_LWIP_Init(void)
   dhcp_start(&gnetif);
 
 /* USER CODE BEGIN 3 */
-
+  printDHCP_IP(&gnetif);
 /* USER CODE END 3 */
 }
 
